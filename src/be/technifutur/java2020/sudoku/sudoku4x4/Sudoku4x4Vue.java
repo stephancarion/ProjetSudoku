@@ -6,7 +6,7 @@ public class Sudoku4x4Vue implements Sudoku {
 
     public static void main(String[] args) {
         Sudoku4x4Vue sv = new Sudoku4x4Vue();
-        Sudoku4x4Modele sm = new Sudoku4x4Modele();
+        Sudoku4x4Model sm = new Sudoku4x4Model();
 
         /*for(int l = 1 ; l <= 4; l++){
             for (int c=1; c <= 4; c++){
@@ -21,7 +21,7 @@ public class Sudoku4x4Vue implements Sudoku {
         sv.afficheGrille();
     }
 
-    private Sudoku4x4Modele model = new Sudoku4x4Modele();
+    private Sudoku4x4Model model = new Sudoku4x4Model();
 
     private String grille = ""+
                 "+-----+-----+\n"+
@@ -36,7 +36,7 @@ public class Sudoku4x4Vue implements Sudoku {
         grille=grille.replace(".","%s");
     }
 
-    public void setModel(Sudoku4x4Modele model){
+    public void setModel(Sudoku4x4Model model){
         this.model = model;
     }
 
