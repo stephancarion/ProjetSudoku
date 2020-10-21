@@ -5,7 +5,7 @@ public class SudokuEtoile implements Sudoku {
     public void afficheGrilleVide() {
 
         System.out.println("+-------+-------+-------+       +-------+-------+-------+");
-        System.out.println("| . . . | . . . | . . . |       | . . . | . . . | . . . |");
+        System.out.println("| . . . | . . . | . . . | * * * | . . . | . . . | . . . |");
         System.out.println("| . . . | . . . | . . . |       | . . . | . . . | . . . |");
         System.out.println("| . . . | . . . | . . . |       | . . . | . . . | . . . |");
         System.out.println("+-------+-------+-------+       +-------+-------+-------+");

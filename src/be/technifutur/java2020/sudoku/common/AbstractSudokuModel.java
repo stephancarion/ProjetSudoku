@@ -1,15 +1,11 @@
-package be.technifutur.java2020.sudoku;
+package be.technifutur.java2020.sudoku.common;
 
-public abstract class SudokuAbstractModel {
+public abstract class AbstractSudokuModel {
 
-    private char[][] grille;
+    private final char[][] grille;
 
-    public SudokuAbstractModel(char[][] grille){
-        this.grille=grille;
-    }
-
-    public char[][] getGrille() {
-        return grille;
+    protected AbstractSudokuModel(int lig , int col){
+        grille=new char[lig][col];
     }
 
     public void setValue (char value, int line, int column){
