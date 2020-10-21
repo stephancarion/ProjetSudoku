@@ -1,12 +1,42 @@
 package be.technifutur.java2020.sudoku.sudoku4x4;
 
-import java.awt.datatransfer.StringSelection;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Sudoku4x4Ctrl {
-    private String input = new String();
-    private Sudoku4x4Vue vue = new Sudoku4x4Vue();
-    private Sudoku4x4Model model = new Sudoku4x4Model();
+    private final Scanner sc = new Scanner(System.in);
+    private Sudoku4x4Vue vue;
+    private Sudoku4x4Model model;
+
+    private void askInputValue(){
+        System.out.println("Veuillez saisir une chaîne  de type l.c.v où :\n" +
+                "- l représente le numéro de la ligne (entre 1 et 4)\n"+
+                "- c représente le numéro de la colonne (entre 1 et 4)\n"+
+                "- v représente une valeur (entre 1 et 4)\n"+
+                "\n"+
+                "Pour quitter entrez 'q' ou 'Q'.");
+        String input = sc.nextLine();
+
+        setValue(input);
+
+    }
+
+    private void setValue(String input){
+
+        if(input.equalsIgnoreCase("q")){
+            System.out.println("Au revoir");
+        }else if(Pattern.matches("[1-4]\\.[1-4]\\.[1-4]",input)){
+            int line = Integer.parseInt(input.substring(0,1)) - 1;
+            int column = Integer.parseInt(input.substring(2,3)) -1;
+            char value = input.charAt(4);
+            model.setValue(value,line,column);
+            vue.afficheGrille();
+            this.askInputValue();
+        }else{
+            System.out.println("Erreur de saisie");
+            this.askInputValue();
+        }
+    }
 
     public void setVue(Sudoku4x4Vue vue){
         this.vue=vue;
@@ -16,83 +46,20 @@ public class Sudoku4x4Ctrl {
         this.model=model;
     }
 
-    public void askInputValue(){
-        Scanner sc = new Scanner();
-        String input = new String();
-
-        while(!isValidInputValue(String input)) {
-            vue.afficheGrille();
-            System.out.println("Veuillez entrez une chaîne type lig.col.val (ex : \"1.1.2 pour entrer la valeur 2 en lig 1 col 1\").\n" +
-                    " Pour quitter entrez 'q' ou 'Q'.\n");
-            input = sc.nextLine();
-        }
-
-    }
-
-    public boolean isValidInputValue(String input) {
-        boolean valid =false;
-
-        if ("q".equalsIgnoreCase(input)){
-            valid = true;
-        }else{
-            String[] tabStr = input.split(".");
-            if (tabStr.length == 3){
-                for (int i=0; i< tabStr.length; i++){
-                    valid = Integer[i]
-                }
-
-            }
-        }
-        return valid;
-    }
-
-    public String addValue(){
-
-        /*boolean estValide = false;
-        String input = new String();
-        Scanner sc = new Scanner(System.in);
-        int ligne = 0, colonne = 0;
-        char value = 0;
-
-
-        while (!estValide){
-            System.out.println("Veuillez entrez une chaîne type lig.col.val (ex : \"1.1.2 pour entrer la valeur 2 en lig 1 col 1\").\n" +
-                    " Pour quitter entrez 'q' ou 'Q'.\n");
-            input = sc.nextLine();
-            estValide = input.equalsIgnoreCase("q") ||
-                    (
-                            input.length()==5 &&
-                            Character.isDigit(input.charAt(0)) &&
-                            input.charAt(1) == '.' &&
-                            Character.isDigit(input.charAt(2)) &&
-                            input.charAt(3) == '.' &&
-                            Character.isDigit(input.charAt(4))
-                    );
-        }
-
-        if (!input.equalsIgnoreCase("q")) {
-            ligne = Character.getNumericValue(input.charAt(0)) - 1;
-            colonne= Character.getNumericValue(input.charAt(2)) - 1;
-            value = input.charAt(4);
-            model.setValue(value,ligne,colonne);
-        }
-
-        return input;*/
+    public void start(){
+        vue.afficheGrille();
+        this.askInputValue();
     }
 
     public static void main(String[] args) {
-        Sudoku4x4Ctrl ctrl = new Sudoku4x4Ctrl();
-        Sudoku4x4Model model = new Sudoku4x4Model();
-        Sudoku4x4Vue vue = new Sudoku4x4Vue();
-        String input = new String();
+        Sudoku4x4Ctrl c = new Sudoku4x4Ctrl();
+        Sudoku4x4Vue v = new Sudoku4x4Vue();
+        Sudoku4x4Model m = new Sudoku4x4Model();
 
-        ctrl.setVue(vue);
-        ctrl.setModel(model);
-        vue.setModel(model);
+        c.setVue(v);
+        c.setModel(m);
+        v.setModel(m);
 
-        while (!input.equalsIgnoreCase("q")){
-            vue.afficheGrille();
-            input =ctrl.addValue();
-        }
+        c.start();
     }
 }

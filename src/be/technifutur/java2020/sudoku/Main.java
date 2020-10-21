@@ -1,7 +1,6 @@
 package be.technifutur.java2020.sudoku;
 
 import be.technifutur.java2020.sudoku.sudoku4x4.Sudoku4x4Vue;
-import be.technifutur.java2020.sudoku.sudoku9x9.Sudoku9x9Vue;
 
 import java.util.Scanner;
 
@@ -23,13 +22,13 @@ public class Main {
             if (choix == 1){
                 Sudoku4x4Vue s1 = new Sudoku4x4Vue();
                 s1.afficheGrilleVide();
-            }else if (choix == 2){
+            }/*else if (choix == 2){
                 Sudoku9x9Vue s2 = new Sudoku9x9Vue();
                 s2.afficheGrilleVide();
             } else if (choix == 3){
                 SudokuEtoile s3 = new SudokuEtoile();
                 s3.afficheGrilleVide();
-            }
+            }*/
 
         }while(choix != 0);
 

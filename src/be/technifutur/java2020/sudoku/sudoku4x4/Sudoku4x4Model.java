@@ -1,37 +1,40 @@
 package be.technifutur.java2020.sudoku.sudoku4x4;
 
-public class Sudoku4x4Model {
+import be.technifutur.java2020.sudoku.SudokuAbstractModel;
 
-    private char[][] grille = new char[4][4];
+public class Sudoku4x4Model extends SudokuAbstractModel {
 
-    public void setValue (char value, int line, int column){
-        if (isValueValid(value))
-        if (isPositionValid(line,column)){
+    public Sudoku4x4Model() {
+        super(new char[4][4]);
+    }
+
+    /*public void setValue (char value, int line, int column){
+        if (isValueValid(value) && isPositionValid(line,column)){
             grille[line][column] = value;
         }
         else{
-            System.out.println("Position incorrecte");
+            System.out.println("Position ou valeur incorrecte");
         }
-    }
+    }*/
 
-    public char getValue(int ligne, int colonne){
+    /*public char getValue(int line, int column){
         char c = 0;
-        if (isPositionValid(ligne,colonne)){
-            c= grille[ligne][colonne];
+        if (isPositionValid(line,column)){
+            c= grille[line][column];
         }
         return c;
-    }
+    }*/
 
-    private boolean isValueValid(char value) {
+    public boolean isValueValid(char value) {
         boolean valid = false;
         int val = Character.getNumericValue(value); // conversion char --> int
 
-        valid = val >= 1 && val <= 9;
+        valid = val >= 1 && val <= 4;
 
         return valid;
     }
 
-    private boolean isPositionValid(int ligne, int colonne) {
+    public boolean isPositionValid(int ligne, int colonne) {
         return ligne >= 0 && ligne < 4 && colonne >= 0 && colonne < 4;
     }
 
