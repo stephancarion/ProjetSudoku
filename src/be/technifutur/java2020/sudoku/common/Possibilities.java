@@ -12,8 +12,36 @@ package be.technifutur.java2020.sudoku.common;
 public class Possibilities {
     private int data = 0;
 
+    /* Pour tests
+    public int getData() {
+        return data;
+    }
+    */
+
     // Par défaut, toutes les valeurs de 1 à 9 sont possibles à l'instanciation
     public Possibilities(){
         data=0b111111111;
     }
+
+    // La possibilité de la valeur passée en paramètre existe après appel de la fonction
+    // Renvoie faux si las possibilité existait avant appel, vrai si la possibilité n'existait pas avant appel
+    public boolean add (int value){
+        boolean change = false;
+        int masque = (1 << value-1);
+
+        change = (data & masque) == 0;
+        data = data | masque;
+
+        return change;
+    }
+
+    /* tests
+    public static void main(String[] args) {
+        Possibilities p = new Possibilities();
+
+        System.out.println(Integer.toBinaryString(p.getData()));
+        System.out.println(p.add(1));
+        System.out.println(Integer.toBinaryString(p.getData()));
+    }
+    */
 }
