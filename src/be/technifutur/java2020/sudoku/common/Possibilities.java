@@ -12,11 +12,11 @@ package be.technifutur.java2020.sudoku.common;
 public class Possibilities {
     private int data = 0;
 
-    /* Pour tests
+    /* Pour tests*/
     public int getData() {
         return data;
     }
-    */
+    /**/
 
     // Par défaut, toutes les valeurs de 1 à 9 sont possibles à l'instanciation
     public Possibilities(){
@@ -47,15 +47,28 @@ public class Possibilities {
         return change;
     }
 
-    /* tests
+    // Renvoie vrai si la valeur existe
+    public boolean contains(int value){
+
+        int masque = (1 << value -1);
+
+        return (data & masque) != 0;
+    }
+
+    /* tests*/
     public static void main(String[] args) {
         Possibilities p = new Possibilities();
 
         System.out.println(Integer.toBinaryString(p.getData()));
-        System.out.println(p.add(1));
-        System.out.println(Integer.toBinaryString(p.getData()));
-        System.out.println(p.remove(3));
-        System.out.println(Integer.toBinaryString(p.getData()));
+        System.out.println(p.contains(1));
+        System.out.println(p.contains(2));
+        System.out.println(p.contains(3));
+        System.out.println(p.contains(4));
+        System.out.println(p.contains(5));
+        System.out.println(p.contains(6));
+        System.out.println(p.contains(7));
+        System.out.println(p.contains(8));
+        System.out.println(p.contains(9));
     }
-    */
+    /**/
 }
