@@ -20,11 +20,11 @@ public class Possibilities {
 
     // Par défaut, toutes les valeurs de 1 à 9 sont possibles à l'instanciation
     public Possibilities(){
-        data=0b111111111;
+        data=0b101111000;
     }
 
     // La possibilité de la valeur passée en paramètre existe après appel de la fonction
-    // Renvoie faux si las possibilité existait avant appel, vrai si la possibilité n'existait pas avant appel
+    // Renvoie faux si la possibilité existait avant appel, vrai si la possibilité n'existait pas avant appel
     public boolean add (int value){
         boolean change = false;
         int masque = (1 << value-1);
@@ -35,12 +35,26 @@ public class Possibilities {
         return change;
     }
 
+    // La possibilité de la valeur passée en paramètre n'existe pas après appel de la fonction
+    // Renvoie faux si la possibilité n'existait pas avant appel, vrai si la possibilité existait avant appel
+    public boolean remove(int value){
+        boolean change = false;
+        int masque = (1 << value-1);
+
+        change = ~(data | ~masque) ==0;
+        data = data & ~masque;
+
+        return change;
+    }
+
     /* tests
     public static void main(String[] args) {
         Possibilities p = new Possibilities();
 
         System.out.println(Integer.toBinaryString(p.getData()));
         System.out.println(p.add(1));
+        System.out.println(Integer.toBinaryString(p.getData()));
+        System.out.println(p.remove(3));
         System.out.println(Integer.toBinaryString(p.getData()));
     }
     */
