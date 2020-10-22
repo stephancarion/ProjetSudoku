@@ -12,15 +12,9 @@ package be.technifutur.java2020.sudoku.common;
 public class Possibilities {
     private int data = 0;
 
-    /* Pour tests*/
-    public int getData() {
-        return data;
-    }
-    /**/
-
     // Par défaut, toutes les valeurs de 1 à 9 sont possibles à l'instanciation
     public Possibilities(){
-        data=0b101111000;
+        data=0b111111111;
     }
 
     // La possibilité de la valeur passée en paramètre existe après appel de la fonction
@@ -55,20 +49,15 @@ public class Possibilities {
         return (data & masque) != 0;
     }
 
-    /* tests*/
-    public static void main(String[] args) {
-        Possibilities p = new Possibilities();
+    // Renvoit le nombre de possibilités qui existe(nt)
+    public int size(){
+        int cpt =0;
 
-        System.out.println(Integer.toBinaryString(p.getData()));
-        System.out.println(p.contains(1));
-        System.out.println(p.contains(2));
-        System.out.println(p.contains(3));
-        System.out.println(p.contains(4));
-        System.out.println(p.contains(5));
-        System.out.println(p.contains(6));
-        System.out.println(p.contains(7));
-        System.out.println(p.contains(8));
-        System.out.println(p.contains(9));
+        for(int nb = 1; nb <= 9; nb++){
+            if (this.contains(nb)){
+                cpt++;
+            }
+        }
+        return cpt;
     }
-    /**/
 }
