@@ -6,9 +6,9 @@ et qui spécifie à quelle ligne, colonne et carré est attaché cette cellule.
  */
 
 public class Cell {
-    private final Possibilities ligne;
-    private final Possibilities colonne;
-    private final Possibilities carre;
+    private Possibilities ligne;
+    private Possibilities colonne;
+    private Possibilities carre;
     private char valeur;
     private boolean modifiable;
 
@@ -30,5 +30,13 @@ public class Cell {
 
     public char getValue() {
         return valeur;
+    }
+
+    public boolean isEmpty(){
+        return this.valeur == 0;
+    }
+
+    public void remove(){
+        this.valeur = 0;
     }
 }
