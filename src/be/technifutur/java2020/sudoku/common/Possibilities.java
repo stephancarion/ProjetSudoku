@@ -51,13 +51,6 @@ public class Possibilities {
 
     // Renvoit le nombre de possibilités qui existe(nt)
     public int size(){
-        int cpt =0;
-
-        for(int nb = 1; nb <= 9; nb++){
-            if (this.contains(nb)){
-                cpt++;
-            }
-        }
-        return cpt;
+        return Integer.bitCount(data);
     }
 }
