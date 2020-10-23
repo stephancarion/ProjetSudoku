@@ -23,4 +23,12 @@ public class Cell {
     public void addCarre(Possibilities carre){
         this.carre=carre;
     }
+
+    public void setValue(char value) {
+        this.valeur = value;
+    }
+
+    public char getValue() {
+        return valeur;
+    }
 }
