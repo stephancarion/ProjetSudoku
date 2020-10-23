@@ -12,9 +12,11 @@ package be.technifutur.java2020.sudoku.common;
 public class Possibilities {
     private int data = 0;
 
-    // Par défaut, toutes les valeurs de 1 à 9 sont possibles à l'instanciation
-    public Possibilities(){
-        data=0b111111111;
+    // Constructeur où les valeurs passées en paramètre sont les valeurs possibles
+    public Possibilities(int... values){
+        for (int val:values) {
+            add(val);
+        }
     }
 
     // La possibilité de la valeur passée en paramètre existe après appel de la fonction
