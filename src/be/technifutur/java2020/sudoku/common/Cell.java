@@ -11,4 +11,16 @@ public class Cell {
     private final Possibilities carre;
     private char valeur;
     private boolean modifiable;
+
+    public void addLigne(Possibilities ligne){
+        this.ligne=ligne;
+    }
+
+    public void addColonne(Possibilities colonne){
+        this.colonne=colonne;
+    }
+
+    public void addCarre(Possibilities carre){
+        this.carre=carre;
+    }
 }
