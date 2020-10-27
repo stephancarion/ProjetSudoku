@@ -9,15 +9,22 @@ package be.technifutur.java2020.sudoku.common;
  -- Exemple: 0b001101001 signifie que les valeurs 1,4,6 et 7 sont possibles
  */
 
+import java.util.Set;
+
 public class Possibilities {
     private int data = 0;
 
     // Constructeur où les valeurs passées en paramètre sont les valeurs possibles
-    public Possibilities(int... values){
-        for (int val:values) {
+    public Possibilities(Set<Integer> initialValues){
+        for (int val:initialValues) {
             add(val);
         }
     }
+
+    public Possibilities(int max){
+        data= (1 << max ) -1 ;
+    }
+
 
     // La possibilité de la valeur passée en paramètre existe après appel de la fonction
     // Renvoie faux si la possibilité existait avant appel, vrai si la possibilité n'existait pas avant appel
