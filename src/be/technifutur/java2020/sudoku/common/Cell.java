@@ -5,14 +5,38 @@ Classe qui retient la valeur d'une cellule d'un sudoku
 et qui spécifie à quelle ligne, colonne et carré est attaché cette cellule.
  */
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Cell {
-    private Possibilities ligne;
+    private Position position;
+    private Set<Area> areaSet;
+
+    /*private Possibilities ligne;
     private Possibilities colonne;
     private Possibilities carre;
     private char valeur;
-    private boolean modifiable;
+    private boolean modifiable;*/
 
-    public void addLigne(Possibilities ligne){
+    public Cell(Position position){
+        this.position=position;
+        areaSet = new HashSet<>();
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public boolean add(Area area) {
+        boolean add = false;
+        if(area.getPositionSet().contains(this.position)) {
+            add = areaSet.add(area);
+        }
+        return add;
+    }
+
+    /*public void addLigne(Possibilities ligne){
         this.ligne=ligne;
     }
 
@@ -38,5 +62,5 @@ public class Cell {
 
     public void remove(){
         this.valeur = 0;
-    }
+    }*/
 }
