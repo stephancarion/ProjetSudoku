@@ -1,12 +1,14 @@
 package be.technifutur.java2020.sudoku.sudoku4x4;
 
 import be.technifutur.java2020.sudoku.common.AbstractSudokuModel;
+import be.technifutur.java2020.sudoku.common.Cell;
+import be.technifutur.java2020.sudoku.common.Position;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sudoku4x4Model extends AbstractSudokuModel {
 
-    public Sudoku4x4Model() {
-        super(4,4);
-    }
 
     @Override
     public boolean isValueValid(char value) {
@@ -19,8 +21,21 @@ public class Sudoku4x4Model extends AbstractSudokuModel {
     }
 
     @Override
-    public boolean isPositionValid(int ligne, int colonne) {
-        return ligne >= 0 && ligne < 4 && colonne >= 0 && colonne < 4;
+    public Map<Position, Cell> getGrille() {
+        // construire la map
+        HashMap<Position, Cell> map = new HashMap<>();
+        // construire les cellules
+
+        // construire les positions
+        // construire les Areas
+
+        // associer le tout
+        return map;
+    }
+
+    @Override
+    public int getNbCase(){
+        return 4*4;
     }
 
 }

@@ -36,6 +36,12 @@ public class Cell {
         return add;
     }
 
+    public void setValue(char value) {
+        //TODO à coder
+    }
+
+
+
     /*public void addLigne(Possibilities ligne){
         this.ligne=ligne;
     }
