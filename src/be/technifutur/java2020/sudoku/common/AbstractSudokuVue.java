@@ -8,18 +8,18 @@ public abstract class AbstractSudokuVue implements Sudoku {
     private int nbLig;
     private int nbCol;
 
-    protected AbstractSudokuVue(int nbLig, int nbCol, String grille){
+    /*protected AbstractSudokuVue(int nbLig, int nbCol, String grille){
         this.nbLig=nbLig;
         this.nbCol=nbCol;
         this.grille= grille.replace(".","%s");
         this.grille=this.grille.replace("*", "%s");
-    }
+    }*/
 
     public void setModel(AbstractSudokuModel model){
         this.model=model;
     }
 
-    public void afficheGrille(){
+    /*public void afficheGrille(){
         Character[] tabValue = new Character[nbLig*nbCol];
 
         for(int lig = 0; lig < nbLig; lig++){
@@ -38,7 +38,7 @@ public abstract class AbstractSudokuVue implements Sudoku {
             }
         }
         System.out.printf(grille,tabValue);
-    }
+    }*/
 
     @Override
     public void afficheGrilleVide(){

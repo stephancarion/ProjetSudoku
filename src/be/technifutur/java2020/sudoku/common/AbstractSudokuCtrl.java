@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractSudokuCtrl {
     private final Scanner sc = new Scanner(System.in);
-    private AbstractSudokuVue vue;
+    //private AbstractSudokuVue vue;
+    private Sudoku4x4Vue vue;
     private AbstractSudokuModel model;
     private int nbLig;
     private int nbCol;
@@ -69,7 +70,7 @@ public abstract class AbstractSudokuCtrl {
         }
     }
 
-    public void setVue(AbstractSudokuVue vue){
+    public void setVue(Sudoku4x4Vue vue){
         this.vue=vue;
     }
 

@@ -14,24 +14,18 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Quel sudoku souhaitez-vous?");
         System.out.println("1 - Sudoku 4x4");
-        System.out.println("2 - Sudoku 9x9");
+        //System.out.println("2 - Sudoku 9x9");
+        System.out.println("0 -Quitter");
         System.out.println("Votre choix?");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
         switch (input){
             case "1":
-                Sudoku4x4Vue v4 = new Sudoku4x4Vue();
                 Sudoku4x4Ctrl c4 = new Sudoku4x4Ctrl();
-                Sudoku4x4Model m4 = new Sudoku4x4Model();
-
-                v4.setModel(m4);
-                c4.setModel(m4);
-                c4.setVue(v4);
-
                 c4.start();
                 break;
-            case  "2":
+            /*case  "2":
                 Sudoku9x9Vue v9 = new Sudoku9x9Vue();
                 Sudoku9x9Ctrl c9 = new Sudoku9x9Ctrl();
                 Sudoku9x9Model m9 = new Sudoku9x9Model();
@@ -41,7 +35,9 @@ public class Main {
                 c9.setVue(v9);
 
                 c9.start();
-                break;
+                break;*/
+            case "0":
+                System.out.println("Au revoir");
         }
 
 

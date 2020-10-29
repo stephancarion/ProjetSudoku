@@ -46,7 +46,6 @@ public class Possibilities {
 
         change = ~(data | ~masque) ==0;
         data = data & ~masque;
-
         return change;
     }
 

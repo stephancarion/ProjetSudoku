@@ -7,21 +7,45 @@ et qui spécifie à quelle ligne, colonne et carré est attaché cette cellule.
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Cell {
     private Position position;
     private Set<Area> areaSet;
-
-    /*private Possibilities ligne;
-    private Possibilities colonne;
-    private Possibilities carre;
-    private char valeur;
-    private boolean modifiable;*/
+    private char value = '.';
 
     public Cell(Position position){
         this.position=position;
         areaSet = new HashSet<>();
+    }
+
+    public char getValue() {
+        return value;
+    }
+
+    public void setValue(char value) {
+        boolean canSet=true;
+        int i = Integer.parseInt("0" + value);
+        Iterator<Area> iterator = areaSet.iterator();
+        while (iterator.hasNext() && canSet){
+            if (! iterator.next().contains(i)){
+                System.out.println("if");
+                canSet=false;
+            }
+        }
+
+        if (canSet){
+            this.value=value;
+            removeValue();
+        }
+    }
+
+    public void removeValue(){
+        int i = Integer.parseInt("0" + value);
+        for (Area area:areaSet) {
+            area.remove(i);
+        }
     }
 
     public Position getPosition() {
@@ -36,9 +60,12 @@ public class Cell {
         return add;
     }
 
-    public void setValue(char value) {
-        //TODO à coder
-    }
+
+
+    /*public char getValue(){
+        // TODO à coder
+        return 0;
+    }*/
 
 
 

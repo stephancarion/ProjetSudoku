@@ -13,7 +13,7 @@ public abstract class AbstractSudokuModel {
     }
 
     public void setValue (char value, Position position){
-        if (isValueValid(value) && isPositionValid(Position)){
+        if (isValueValid(value) && isPositionValid(position)){
             Cell cell = getCell(position);
             cell.setValue(value);
         }
@@ -45,7 +45,7 @@ public abstract class AbstractSudokuModel {
 
     public void removeValue(int line, int column){
         if(isPositionValid(line,column)){
-            grille[line][column] = EMPTY;
+            grille.get(new Position(line,column));
         }
     }
 

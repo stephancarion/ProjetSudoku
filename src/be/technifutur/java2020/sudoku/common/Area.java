@@ -72,10 +72,4 @@ public class Area {
         return possibilities.size();
     }
 
-    public static void main(String[] args) {
-        Area area = new Area(9,AreaType.SQUARE,new Position(3,3));
-        for(Position p : area.getPositionSet()){
-            System.out.println(p.toString());
-        }
-    }
 }
