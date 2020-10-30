@@ -7,9 +7,8 @@ import be.technifutur.java2020.sudoku.common.Position;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Sudoku4x4Ctrl{
+public class Sudoku4x4Ctrl extends AbstractSudokuCtrl{
 
-    private final Scanner sc = new Scanner(System.in);
     private Sudoku4x4Vue vue;
     private Sudoku4x4Model model;
 
@@ -21,24 +20,7 @@ public class Sudoku4x4Ctrl{
         vue.setModel(model);
     }
 
-    private void setVue(Sudoku4x4Vue vue){
-        this.vue=vue;
-    }
-    private void setModel(Sudoku4x4Model model){
-        this.model=model;
-    }
-
-    public void start(){
-        String input;
-        do{
-            vue.afficheGrille();
-            this.afficheDemandeSaisie();
-            input =this.returnValidInput();
-            this.giveToModel(input);
-        }while (! "q".equalsIgnoreCase(input));
-    }
-
-    private void afficheDemandeSaisie(){
+    protected void afficheDemandeSaisie(){
         String texteAAfficher ="Veuillez saisir une chaîne  de type l.c.v où :\n" +
                                 "- l représente le numéro de la ligne (entre 1 et 4))\n"+
                                 "- c représente le numéro de la colonne (entre 1 et 4)\n"+
@@ -48,7 +30,7 @@ public class Sudoku4x4Ctrl{
         System.out.println(texteAAfficher);
     }
 
-    private String returnValidInput() {
+    protected String returnValidInput() {
         String input;
         boolean validInput=false;
 
@@ -59,20 +41,5 @@ public class Sudoku4x4Ctrl{
 
         return input;
     }
-
-    private void giveToModel(String input) {
-        String[] inputTab = input.split("\\.");
-        if (inputTab.length==3){
-            int line = Integer.parseInt(inputTab[0]) - 1;
-            int column = Integer.parseInt(inputTab[1]) - 1;
-            char value = inputTab[2].charAt(0);
-            model.setValue(line, column, value);
-        }
-    }
-
-
-
-
-
 
 }

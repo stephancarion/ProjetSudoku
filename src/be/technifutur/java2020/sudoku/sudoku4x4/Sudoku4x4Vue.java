@@ -3,7 +3,7 @@ package be.technifutur.java2020.sudoku.sudoku4x4;
 import be.technifutur.java2020.sudoku.common.AbstractSudokuModel;
 import be.technifutur.java2020.sudoku.common.AbstractSudokuVue;
 
-public class Sudoku4x4Vue{
+public class Sudoku4x4Vue extends AbstractSudokuVue{
     private Sudoku4x4Model model;
     private String grille=""+
             "l\\c  1 2   3 4 \n"+
@@ -19,11 +19,7 @@ public class Sudoku4x4Vue{
         this.grille=this.grille.replace(".","%s");
     }
 
-    void setModel(Sudoku4x4Model model) {
-        this.model = model;
-    }
-
-    public void afficheGrille(){
+    protected void afficheGrille(){
         Character[] tabValue = new Character[4*4];
 
         for(int l = 0; l < 4; l++){

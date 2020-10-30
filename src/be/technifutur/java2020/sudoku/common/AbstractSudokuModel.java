@@ -1,53 +1,44 @@
 package be.technifutur.java2020.sudoku.common;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractSudokuModel {
 
     public static final char EMPTY = 0;
 
-    private Map<Position,Cell> grille;
+    protected HashMap<Position,Cell> map = new HashMap<>();
 
-    public void setValue (char value, int line, int column){
-        setValue(value,new Position(line,column));
-    }
-
-    public void setValue (char value, Position position){
-        if (isValueValid(value) && isPositionValid(position)){
-            Cell cell = getCell(position);
-            cell.setValue(value);
-        }
-    }
-
-    private Cell getCell(Position position) {
-        return getGrille().get(position);
-    }
-
-    public char getValue(int line, int column){
-        return getValue(new Position(line,column));
-    }
-
-    public char getValue(Position position){
-        return grille.get(position).getValue();
-    }
+    protected abstract void getGrille();
 
     public abstract boolean isValueValid(char value);
 
-    public abstract Map<Position,Cell> getGrille();
-
-    public boolean isPositionValid(int ligne, int colonne){
-        return isPositionValid(new Position(ligne, colonne));
+    public boolean isPositionValid(int line, int column){
+        Position position = new Position(line, column);
+        return isPositionValid(position);
     }
 
     public boolean isPositionValid(Position position){
-        return this.getGrille().containsKey(position);
+        return map.containsKey(position);
     }
 
-    public void removeValue(int line, int column){
-        if(isPositionValid(line,column)){
-            grille.get(new Position(line,column));
-        }
+    public char getValue(int line, int column) {
+        Position position = new Position(line, column);
+        return getValue(position);
     }
 
+    public char getValue(Position position) {
+        return map.get(position).getValue();
+    }
 
+    public void setValue(int line, int column, char value) {
+        Position position = new Position(line,column);
+        setValue(position, value);
+    }
+
+    public void setValue(Position position, char value) {
+        map.get(position).setValue(value);
+    }
+
+    public abstract int getNbCase();
 }

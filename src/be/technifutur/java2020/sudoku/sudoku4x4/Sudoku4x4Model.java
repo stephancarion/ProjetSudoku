@@ -4,15 +4,13 @@ import be.technifutur.java2020.sudoku.common.*;
 
 import java.util.*;
 
-public class Sudoku4x4Model{
-
-    private HashMap<Position,Cell> map = new HashMap<>();
+public class Sudoku4x4Model extends AbstractSudokuModel{
 
     public Sudoku4x4Model() {
         getGrille();
     }
 
-    public void getGrille() {
+    protected void getGrille() {
         Area[] lineTab = new Area[4];
         Area[] columnTab=new Area[4];
         Area[] squareTab=new Area[4];
@@ -36,33 +34,6 @@ public class Sudoku4x4Model{
 
     public boolean isValueValid(char value) {
         return Character.getNumericValue(value) >= 1 && Character.getNumericValue(value) <=4;
-    }
-
-    public boolean isPositionValid(int line, int column){
-        Position position = new Position(line, column);
-        return isPositionValid(position);
-    }
-
-    public boolean isPositionValid(Position position){
-        return map.containsKey(position);
-    }
-
-    public char getValue(int line, int column) {
-        Position position = new Position(line, column);
-        return getValue(position);
-    }
-
-    public char getValue(Position position) {
-        return map.get(position).getValue();
-    }
-
-    public void setValue(int line, int column, char value) {
-        Position position = new Position(line,column);
-        setValue(position, value);
-    }
-
-    public void setValue(Position position, char value) {
-        map.get(position).setValue(value);
     }
 
     public int getNbCase(){
